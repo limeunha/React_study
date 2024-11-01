@@ -20,7 +20,7 @@ const UseMemoEx1 = () => {
    }
 
    const onInsert = (e) => {
-      const nextList = list.concat(parseInt(number))
+      const nextList = list.concat(Number(number))
       setList(nextList)
       setNumber('')
    }

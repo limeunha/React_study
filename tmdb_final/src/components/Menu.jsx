@@ -15,15 +15,13 @@ function Menu() {
                   <NavLink to="/popular">인기영화</NavLink>
                </li>
                <li>
-                  <NavLink to="/now-playing">현재 상영 중</NavLink>
+                  <NavLink to="/now_playing">현재 상영 중</NavLink>
                </li>
                <li>
                   <NavLink to="/upcoming">개봉 예정</NavLink>
                </li>
-               <li>
-                  <li style={{ float: 'right' }} className="login">
-                     <NavLink to="/login">로그인</NavLink>
-                  </li>
+               <li style={{ float: 'right' }} className="login">
+                  <NavLink to="/login">로그인</NavLink>
                </li>
             </ul>
          </nav>

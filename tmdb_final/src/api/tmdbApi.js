@@ -1,14 +1,15 @@
 import axios from 'axios'
 
+// TMDB API 기본 URL과 API 키 설정
 const BASE_URL = 'https://api.themoviedb.org/3'
 const AUTH_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjdjNTkwZjE1Mjg2MzI4OGMyMWVlODVjNjVlM2I2NCIsIm5iZiI6MTczMTI4Njg0MC4xMjI0MTE1LCJzdWIiOiI2NzFhZjMyYTQ1NDJlMzcxZmUwYTZkMjMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3lx_4wEYsi0mE-MXMd-cVxJT7lEdpGK_UStsrA4dAWk'
 
 // api call을 준비하기 위한 axios 객체 생성
 const tmdbApi = axios.create({
-   baseURL: BASE_URL, // https://api.themoviedb.org/3
+   baseURL: BASE_URL, // 'https://api.themoviedb.org/3'
    headers: {
-      accept: 'application/json', // json 형태로 response 데이터를 받겠다
-      Authorization: AUTH_KEY, // 서버에  request할때 필요한 인증키
+      accept: 'application/json', //json 형태로 response 데이터를 받겠다
+      Authorization: AUTH_KEY, // 서버에 request할때 필요한 인증키
    },
 })
 
@@ -23,7 +24,7 @@ const fetchFromApi = async (url, params = {}) => {
    }
 }
 
-//  인기, 상영중, 개봉 예정 영화 가져오기
+//인기, 상영중, 개봉 예정 영화 가져오기
 export const getMovies = (category = 'popular', page = 1) => {
    // 카테고리에 맞는 endpoint 를 가져옴
    const endpoint = {
@@ -39,7 +40,7 @@ export const getMovies = (category = 'popular', page = 1) => {
    })
 }
 
-// 인기 , 방송 중인 tv 목록 가져오기
+//인기, 방송 중인 tv 목록 가져오기
 export const getTvs = (type, page = 1) => {
    const endpoint = {
       popular: '/tv/popular',
@@ -52,14 +53,14 @@ export const getTvs = (type, page = 1) => {
    })
 }
 
-// 영화 상세 정보 가져오기
-export const getMoviesDetails = (movieId) => {
-   return fetchFromApi(`/movie/{movie_id}`, { language: 'ko-KR' })
+//영화 상세 정보 가져오기
+export const getMovieDetails = (movieId) => {
+   return fetchFromApi(`/movie/${movieId}`, { language: 'ko-KR' })
 }
 
 //출연 배우 정보 가져오기
-export const getMoviesCredits = (movieId) => {
-   return fetchFromApi(`/movie/{movie_id}/credits`, { language: 'ko-KR' })
+export const getMovieCredits = (movieId) => {
+   return fetchFromApi(`/movie/${movieId}/credits`, { language: 'ko-KR' })
 }
 
 //영화검색 API 호출
